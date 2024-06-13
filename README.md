@@ -2,7 +2,7 @@
 
 ## About the Project
 
-This project was created specifically to solve the BND challenge, aiming to provide a robust solution for brute force tasks, with the primary focus on decrypting specific data.
+This project was created specifically to solve the BND challenge (https://github.com/bndchallenge/takur_medicine), aiming to provide a robust solution for brute force tasks, with the primary focus on decrypting specific data. Even though there was a simpler solutionfor this challenge.
 
 ## Adapting for Other Tasks
 
