@@ -1,0 +1,8 @@
+{
+  "name": "bnd-decryptor",
+  "version": "1.0",
+  "dependencies": [
+    "libzip"
+  ],
+  "builtin-baseline": "7bc4bfc031738c8ad06d859124e69d16c4dc89ca"
+}
