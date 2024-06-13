@@ -1,5 +1,23 @@
 #include "helper.h"
 
+// Function to display the progress bar
+void displayProgressBar(unsigned long long current, unsigned long long total) {
+    const int barWidth = 70; // Width of the progress bar
+
+    float progress = (float)current / total;
+    int pos = barWidth * progress;
+
+    std::cout << "[";
+    for (int i = 0; i < barWidth; ++i) {
+        if (i < pos) std::cout << "=";
+        else if (i == pos) std::cout << ">";
+        else std::cout << " ";
+    }
+    
+    std::cout << "] " << int(progress * 100.0) << " % (" << current << "/" << total << " Keys)\r";
+    std::cout.flush();
+}
+
 void uint32_to_uint8_array(uint32_t num, uint8_t arr[4]) {
     const uint8_t* ptr = reinterpret_cast<const uint8_t*>(&num);
     for (int i = 0; i < 4; i++) {

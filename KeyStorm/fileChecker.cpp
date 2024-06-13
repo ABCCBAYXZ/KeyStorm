@@ -3,7 +3,7 @@
 bool is_valid_zip(const std::vector<uint8_t>& data) {
     //replace with other file signature possible
     const uint32_t LOCAL_FILE_HEADER_SIGNATURE = MagicNumbers::ZIP_SIGNATURE_LE;
-    const uint32_t EOCD_SIGNATURE = 0x06054b50;
+    const uint32_t EOCD_SIGNATURE = MagicNumbers::ZIP_EOCD_SIGNATURE_LE;
 
 
     if (data.size() < 30) {

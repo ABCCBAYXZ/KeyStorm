@@ -12,12 +12,15 @@ const uint32_t MAX_KEYS = UINT32_MAX;  // 2^32 - 1 keys, covering 0 to 429496729
 omp_lock_t console_lock;  // OpenMP lock for synchronizing console output
 
 // Shared flag
-volatile int found = 0;
+volatile bool found = 0;
+volatile uint32_t progress = 0;
 
 //key bruteforce
 void process_keys(uint32_t start_key, uint32_t num_keys, const std::vector<uint8_t>& cipher, const std::string& output_path, int thread_id) {
     uint32_t keys_processed = 0;
-    int count = 0;
+    uint32_t count = 0;
+
+    
 
     for (uint32_t i = 0; i < static_cast<int32_t>(num_keys); ++i) {
 
@@ -51,9 +54,12 @@ void process_keys(uint32_t start_key, uint32_t num_keys, const std::vector<uint8
 
         if (!found) {
             count++;
-            if (count % 10000000 == 0)
+            if (count % 5000000 == 0 )
 #pragma omp critical
-                std::cout << "[-] Thread " << thread_id << ": tried " << count << " Keys but nothing Found" << std::endl;
+            {
+                progress += 5000000;
+                displayProgressBar(progress, MAX_KEYS);
+            }
         }
     }
 
